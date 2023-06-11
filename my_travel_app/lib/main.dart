@@ -15,10 +15,10 @@ Future<void> main() async {
 
   runApp(GetMaterialApp(
     initialBinding: InitialBindings(),
-    home: token != null && token ? const HomeView2() :  HomeView(),
+    home: token != null && token ?  HomeView2() :  HomeView2(),
     getPages: [
       GetPage(name: '/homeView', page: () => HomeView(),binding: BindingsBuilder.put(() => HomeController()) ),
-      GetPage(name: '/homeView2', page: () => const HomeView2(),binding: BindingsBuilder.put(() => HomeController2())),
+      GetPage(name: '/homeView2', page: () =>  HomeView2(),binding: BindingsBuilder.put(() => HomeController2()) ),
 
     ],
   ));
