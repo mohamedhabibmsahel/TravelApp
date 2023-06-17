@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_travel_app/views/CustomView.dart';
 import 'package:my_travel_app/views/home2_view.dart';
 import 'package:my_travel_app/controllers/home_controller.dart';
 import 'package:my_travel_app/views/login_View.dart';
@@ -16,11 +17,12 @@ Future<void> main() async {
 
   runApp(GetMaterialApp(
     initialBinding: InitialBindings(),
-    home: token != null && token ?  LoginView() :  HomeView(),
+    home: token != null && token ?   LoginView() :  HomeView(),
     getPages: [
       GetPage(name: '/homeView', page: () => HomeView(),binding: BindingsBuilder.put(() => HomeController()) ),
       GetPage(name: '/homeView2', page: () => const HomeView2(),binding: BindingsBuilder.put(() => HomeController2())),
       GetPage(name: '/LoginView', page: () =>  LoginView(),binding: BindingsBuilder.put(() => HomeController2())),
+      GetPage(name: '/CustomView', page: () =>  CustomView(),binding: BindingsBuilder.put(() => HomeController2())),
 
     ],
   ));
