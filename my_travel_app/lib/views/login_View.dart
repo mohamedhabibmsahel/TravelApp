@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -31,21 +33,16 @@ class _LoginViewState extends State<LoginView> {
             Align(
               alignment: Alignment.bottomCenter,
               child: Container(
-                height: MediaQuery.of(context).size.height * 0.8,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(40.0),
-                      topRight: Radius.circular(40.0)),
-                  color: Color(0xFFFFFFFF),
-                ),
+                height: MediaQuery.of(context).size.height * 0.75,
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(40.0),
-                        topRight: Radius.circular(40.0)),
-                    gradient: RadialGradient(
-                      center: Alignment(0, 0),
-                      radius: 1,
+                      topLeft: Radius.circular(40.0),
+                      topRight: Radius.circular(40.0),
+                    ),
+                    gradient: LinearGradient(
+                      begin: Alignment.centerLeft,
+                      end: Alignment(0.5, 0),
                       colors: [
                         Color.fromRGBO(8, 86, 208, 0.2),
                         Color.fromRGBO(20, 45, 84, 0.03),
@@ -60,8 +57,40 @@ class _LoginViewState extends State<LoginView> {
                       ),
                     ],
                   ),
+
                   child: Stack(
                     children: [
+                      Positioned(
+                        left: 0,
+                        top: MediaQuery.of(context).size.height * 0.2,
+                        child: Container(
+                          width: MediaQuery.of(context).size.width,
+                          height: MediaQuery.of(context).size.height * 0.8,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(40.0),
+                                topRight: Radius.circular(40.0),
+                              ),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.white.withOpacity(0.2),
+                                  blurRadius: 80,
+                                ),
+                              ],
+                            ),
+                            child: BackdropFilter(
+                              filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(40.0),
+                                  topRight: Radius.circular(40.0),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
                       Positioned(
                         left: width / 2,
                         top: -width * 0.8,
