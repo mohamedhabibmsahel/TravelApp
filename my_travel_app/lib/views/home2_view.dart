@@ -47,21 +47,21 @@ class _HomeView2State extends State<HomeView2> {
             },
             children: const [
               OnboardingPage(
-                image: 'assets/1.png',
+                image: 'assets/images/1.png',
                 text: "Tripixie",
                 color: Color.fromRGBO(36, 0, 255, 0.7),
               ),
               OnboardingPage(
-                image: 'assets/2.png',
+                image: 'assets/images/2.png',
                 text: "Tripixie",
                 color: Color.fromRGBO(0, 170, 78, 0.7),
               ),
               OnboardingPage(
-                image: 'assets/3.png',
+                image: 'assets/images/3.png',
                 text: "Tripixie",
                 color: Color.fromRGBO(201, 169, 0, 0.7),
               ), OnboardingPage(
-                image: 'assets/3.png',
+                image: 'assets/images/3.png',
                 color: Color.fromRGBO(217, 217, 217, 1),
                 text: "Video",
               ),

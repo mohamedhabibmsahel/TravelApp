@@ -43,12 +43,12 @@ class HomeView extends StatelessWidget {
           // trailing: Text('Login'),
           background: [
             ColorFiltered(colorFilter: const ColorFilter.mode(Color.fromRGBO(36, 0, 255, 0.7), BlendMode.darken),
-            child: Image.asset('assets/1.png',fit: BoxFit.fitWidth,)
+            child: Image.asset('assets/images/1.png',fit: BoxFit.fitWidth,)
             ),
             ColorFiltered(colorFilter: const ColorFilter.mode(Color.fromRGBO(0, 170, 78, 0.7), BlendMode.darken),
-                child: Image.asset('assets/2.png',fit: BoxFit.fitWidth,)),
+                child: Image.asset('assets/images/2.png',fit: BoxFit.fitWidth,)),
             ColorFiltered(colorFilter: const ColorFilter.mode(Color.fromRGBO(201, 169, 0, 0.7), BlendMode.darken),
-                child: Image.asset('assets/3.png',fit: BoxFit.fitWidth,)),
+                child: Image.asset('assets/images/3.png',fit: BoxFit.fitWidth,)),
           ],
           totalPage: 3,
           speed: 1.8,
