@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:my_travel_app/views/home2_view.dart';
-import 'package:my_travel_app/controllers/home_controller.dart';
+import 'package:my_travel_app/views/on_boarding_screen.dart';
+import 'package:my_travel_app/controllers/login_controller.dart';
 import 'package:my_travel_app/views/login_View.dart';
-import 'package:my_travel_app/views/test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'controllers/home2_controller.dart';
-import 'views/home_view.dart';
+import 'controllers/on_boarding_controller.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,13 +15,10 @@ Future<void> main() async {
 
   runApp(GetMaterialApp(
     initialBinding: InitialBindings(),
-    home: !(token != null && token) ?  test() :  HomeView2(),
+    home: token != null && token ?   LoginView() :  OnBoardingScreen(),
     getPages: [
-      GetPage(name: '/homeView', page: () => HomeView(),binding: BindingsBuilder.put(() => HomeController()) ),
-      GetPage(name: '/LoginView', page: () =>  LoginView(),binding: BindingsBuilder.put(() => HomeController2())),
-      GetPage(name: '/homeView2', page: () =>  HomeView2(),binding: BindingsBuilder.put(() => HomeController2()) ),
-      GetPage(name: '/test', page: () =>   test()) ,
-
+      GetPage(name: '/onBoarding', page: () =>  OnBoardingScreen(),binding: BindingsBuilder.put(() => OnBoardingController())),
+      GetPage(name: '/LoginView', page: () =>  LoginView(),binding: BindingsBuilder.put(() => OnBoardingController())),
     ],
   ));
 }
@@ -31,7 +26,7 @@ Future<void> main() async {
 class InitialBindings implements Bindings {
   @override
   void dependencies() async {
-    Get.put<HomeController>(HomeController(), permanent: true);
-    Get.put<HomeController2>(HomeController2(), permanent: true);
+    Get.put<LoginController>(LoginController(), permanent: true);
+    Get.put<OnBoardingController>(OnBoardingController(), permanent: true);
   }
 }
