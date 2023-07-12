@@ -2,8 +2,12 @@ import 'dart:ui';
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:my_travel_app/views/widget/background_opaque.dart';
 
-class LoginView extends StatefulWidget {
+import '../controllers/login_controller.dart';
+
+/*class LoginView extends StatefulWidget {
   @override
   _LoginViewState createState() => _LoginViewState();
 }
@@ -492,5 +496,52 @@ class _LoginViewState extends State<LoginView> {
         },
       ),
     );
+  }
+}
+*/
+
+class LoginView extends StatelessWidget {
+  const LoginView({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GetBuilder<LoginController>(
+        builder: (controller) => Scaffold(
+              backgroundColor: Colors.white,
+              body: MainTemplateWidget(
+                imageUrl: 'assets/images/topBackground.png',
+                gradiantColors: null,
+                child: Column(
+                  children: [
+                    const Align(
+                        alignment: Alignment.center,
+                        child: Text('Bonjour à tous!',
+                            style: TextStyle(fontSize: 24))),
+                    const SizedBox(height: 10),
+                    const Align(
+                        alignment: Alignment.center,
+                        child: Text('Bienvenue, connectez-vous à votre compte',
+                            style:
+                                TextStyle(fontSize: 14, color: Colors.grey))),
+                    const SizedBox(height: 30),
+                    Container(
+                      decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                          color: Colors.white),
+                      height: 50,
+                      width: double.infinity,
+                    ),
+                    const SizedBox(height: 20),
+                    Container(
+                      decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                          color: Colors.white),
+                      height: 50,
+                      width: double.infinity,
+                    ),
+                  ],
+                ),
+              ),
+            ));
   }
 }
