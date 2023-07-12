@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:my_travel_app/views/CustomView.dart';
-import 'package:my_travel_app/views/home2_view.dart';
-import 'package:my_travel_app/controllers/home_controller.dart';
+import 'package:my_travel_app/controllers/login_controller.dart';
+import 'package:my_travel_app/controllers/verification_code_controller.dart';
 import 'package:my_travel_app/views/login_View.dart';
+import 'package:my_travel_app/views/on_boarding_screen.dart';
 import 'package:my_travel_app/views/verificationCode_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'controllers/home2_controller.dart';
-import 'views/home_view.dart';
+
+import 'controllers/on_boarding_controller.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,14 +18,11 @@ Future<void> main() async {
 
   runApp(GetMaterialApp(
     initialBinding: InitialBindings(),
-    home: token != null && token ?   LoginView() :  HomeView(),
+    home: token != null && token ?   const LoginView() :  OnBoardingScreen(),
     getPages: [
-      GetPage(name: '/homeView', page: () => HomeView(),binding: BindingsBuilder.put(() => HomeController()) ),
-      GetPage(name: '/homeView2', page: () => const HomeView2(),binding: BindingsBuilder.put(() => HomeController2())),
-      GetPage(name: '/LoginView', page: () =>  LoginView(),binding: BindingsBuilder.put(() => HomeController2())),
-      GetPage(name: '/VerificationCodeView', page: () =>  VerificationCodeView(),binding: BindingsBuilder.put(() => HomeController2())),
-      GetPage(name: '/CustomView', page: () =>  CustomView(),binding: BindingsBuilder.put(() => HomeController2())),
-
+      GetPage(name: '/onBoardingScreen', page: () => OnBoardingScreen(),binding: BindingsBuilder.put(() => OnBoardingController()) ),
+      GetPage(name: '/LoginView', page: () =>  const LoginView(),binding: BindingsBuilder.put(() => LoginController())),
+      GetPage(name: '/VerificationCodeView', page: () =>  VerificationCodeView(),binding: BindingsBuilder.put(() => VerificationCodeController())),
     ],
   ));
 }
@@ -33,7 +30,8 @@ Future<void> main() async {
 class InitialBindings implements Bindings {
   @override
   void dependencies() async {
-    Get.put<HomeController>(HomeController(), permanent: true);
-    Get.put<HomeController2>(HomeController2(), permanent: true);
+    Get.put<OnBoardingController>(OnBoardingController(), permanent: true);
+    Get.put<LoginController>(LoginController(), permanent: true);
+    Get.put<VerificationCodeController>(VerificationCodeController(), permanent: true);
   }
 }
