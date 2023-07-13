@@ -510,19 +510,20 @@ class LoginView extends StatelessWidget {
               backgroundColor: Colors.white,
               body: MainTemplateWidget(
                 imageUrl: 'assets/images/topBackground.png',
-                gradiantColors: null,
+                gradiantColors:  [Color.fromRGBO(8, 86, 208, 1).withOpacity(0.2),Color.fromRGBO(20, 45, 84, 0.14).withOpacity(0.2),Color.fromRGBO(8, 86, 208, 1).withOpacity(0.2)],
+                includeBackButton: false,
                 child: Column(
                   children: [
                     const Align(
                         alignment: Alignment.center,
                         child: Text('Bonjour à tous!',
-                            style: TextStyle(fontSize: 24))),
+                            style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold))),
                     const SizedBox(height: 10),
                     const Align(
                         alignment: Alignment.center,
                         child: Text('Bienvenue, connectez-vous à votre compte',
                             style:
-                                TextStyle(fontSize: 14, color: Colors.grey))),
+                                TextStyle(fontSize: 16, color: Colors.white))),
                     const SizedBox(height: 30),
                     Container(
                       decoration: const BoxDecoration(

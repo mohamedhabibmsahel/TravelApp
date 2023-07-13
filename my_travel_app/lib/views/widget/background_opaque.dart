@@ -1,6 +1,4 @@
 import 'dart:ui';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class MainTemplateWidget extends StatelessWidget {
@@ -13,58 +11,138 @@ class MainTemplateWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return LayoutBuilder(
-      builder: (_, constraint) => Stack(
-        children: [
-          Positioned(
-            top: 0,
-            child: Image.asset(
-              imageUrl,
-              fit: BoxFit.cover,
-              width: constraint.maxWidth,
-              height: 350,
-            ),
-          ),
-          if (includeBackButton)
-            Positioned(
-              top: 50,
-              left: 20,
-              child: InkWell(
-                onTap: () {},
-                child: Container(
-                  width: 40,
-                  height: 40,
-                  decoration: BoxDecoration(borderRadius: const BorderRadius.all(Radius.circular(10)), border: Border.all(color: Colors.black)),
-                  child: const Center(child: Text('<', style: TextStyle(fontSize: 28, color: Colors.black))),
+
+        builder: (BuildContext context, BoxConstraints constraint) {
+          final double width = constraint.maxWidth;
+          final double height = constraint.maxHeight;
+          return Stack(
+            children: [
+              Positioned(
+                top: 0,
+                child: Image.asset(
+                  imageUrl,
+                  fit: BoxFit.cover,
+                  width: constraint.maxWidth,
+                  height: 350,
                 ),
               ),
-            ),
-          Positioned(
-            top: 200,
-            child: ClipRect(
-              child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0, tileMode: TileMode.decal),
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-                    gradient: LinearGradient(
-                      colors: gradiantColors ?? [Colors.grey.withOpacity(0.6), Colors.white.withOpacity(0.9)],
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
+              if (includeBackButton)
+                Positioned(
+                  top: 50,
+                  left: 20,
+                  child: InkWell(
+                    onTap: () {},
+                    child: Container(
+                      width: 40,
+                      height: 40,
+                      decoration: BoxDecoration(
+                          borderRadius: const BorderRadius.all(
+                              Radius.circular(10)),
+                          border: Border.all(color: Colors.black)),
+                      child: const Center(child: Text('<',
+                          style: TextStyle(fontSize: 28, color: Colors.black))),
                     ),
                   ),
-                  height: constraint.maxHeight,
-                  width: constraint.maxWidth,
-                  child: Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: child,
+                ),
+              Positioned(
+                left: width / 2,
+                top: -width * 0.8,
+                child: Opacity(
+                  opacity: 0.58,
+                  child: Container(
+                    width: width,
+                    height: height,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(width * 0.1),
+                      gradient: RadialGradient(
+                        center: Alignment.center,
+                        radius: 0.5,
+                        colors: [
+                          Color(0xFF0856D0),
+                          Color.fromRGBO(8, 86, 208, 0),
+                        ],
+                      ),
+                    ),
                   ),
                 ),
               ),
-            ),
-          ),
-        ],
-      ),
+              Positioned(
+                left: width / 2,
+                top: width / 2,
+                child: Opacity(
+                  opacity: 0.58,
+                  child: Container(
+                    width: width,
+                    height: height,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(width * 0.1),
+                      gradient: RadialGradient(
+                        center: Alignment.center,
+                        radius: 0.5,
+                        colors: [
+                          Color(0xFFB7E3FE),
+                          Color.fromRGBO(20, 45, 84, 0),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                right: width / 2,
+                top: width / 2,
+                child: Opacity(
+                  opacity: 0.58,
+                  child: Container(
+                    width: width,
+                    height: height,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(width * 0.1),
+                      gradient: RadialGradient(
+                        center: Alignment.center,
+                        radius: 0.5,
+                        colors: [
+                          Color(0xFFB7E3FE),
+                          Color.fromRGBO(183, 227, 254, 0),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                top: 150,
+                child: ClipRect(
+                  child: BackdropFilter(
+                    filter: ImageFilter.blur(
+                        sigmaX: 10.0, sigmaY: 10.0, tileMode: TileMode.decal),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(40),
+                            topRight: Radius.circular(40)),
+                        gradient: LinearGradient(
+                          colors: gradiantColors ?? [Colors.grey.withOpacity(
+                              0.6), Colors.white.withOpacity(0.9)],
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                        ),
+                      ),
+                      height: constraint.maxHeight,
+                      width: constraint.maxWidth,
+                      child: Padding(
+                        padding: const EdgeInsets.all(20),
+                        child: child,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          );
+        }
     );
   }
 }
