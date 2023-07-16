@@ -111,7 +111,7 @@ class LoginView extends StatelessWidget {
                     ),
                 GestureDetector(
                   onTap: () {
-                    Get.toNamed("VerificationCodeView");
+                    Get.toNamed("RecuperationPasswordView");
                   },
                       child: Align(
                         alignment: Alignment.centerLeft,
