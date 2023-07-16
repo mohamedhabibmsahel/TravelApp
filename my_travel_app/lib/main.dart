@@ -18,7 +18,7 @@ Future<void> main() async {
 
   runApp(GetMaterialApp(
     initialBinding: InitialBindings(),
-    home: token != null && token ?  OnBoardingScreen() :  OnBoardingScreen(),
+    home: token != null && token ?  LoginView() :  OnBoardingScreen(),
     getPages: [
       GetPage(name: '/onBoardingScreen', page: () => OnBoardingScreen(),binding: BindingsBuilder.put(() => OnBoardingController()) ),
       GetPage(name: '/LoginView', page: () =>  const LoginView(),binding: BindingsBuilder.put(() => LoginController())),

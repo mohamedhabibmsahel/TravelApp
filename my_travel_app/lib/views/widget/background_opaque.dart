@@ -19,6 +19,8 @@ class MainTemplateWidget extends StatelessWidget {
           final double height = constraint.maxHeight;
           return Stack(
             children: [
+
+              //PHOTO COUVERTURE
               Positioned(
                 top: 0,
                 child: Image.asset(
@@ -46,14 +48,15 @@ class MainTemplateWidget extends StatelessWidget {
                     ),
                   ),
                 ),
+
               Positioned(
                 left: width / 2,
-                top: -width * 0.8,
+                top: 40,
                 child: Opacity(
-                  opacity: 0.58,
+                  opacity:1,
                   child: Container(
                     width: width,
-                    height: height,
+                    height: width,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(width * 0.1),
                       gradient: RadialGradient(
@@ -69,13 +72,13 @@ class MainTemplateWidget extends StatelessWidget {
                 ),
               ),
               Positioned(
-                left: width / 2,
-                top: width / 2,
+                right: -width / 2,
+                bottom: -width / 2,
                 child: Opacity(
                   opacity: 0.58,
                   child: Container(
                     width: width,
-                    height: height,
+                    height: width,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(width * 0.1),
                       gradient: RadialGradient(
@@ -91,13 +94,13 @@ class MainTemplateWidget extends StatelessWidget {
                 ),
               ),
               Positioned(
-                right: width / 2,
-                top: width / 2,
+                left: -width / 2,
+                bottom: -width / 2,
                 child: Opacity(
-                  opacity: 0.58,
+                  opacity: 0.56,
                   child: Container(
                     width: width,
-                    height: height,
+                    height: width,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(width * 0.1),
                       gradient: RadialGradient(
@@ -114,27 +117,30 @@ class MainTemplateWidget extends StatelessWidget {
               ),
               Positioned(
                 top: 150,
-                child: ClipRect(
-                  child: BackdropFilter(
-                    filter: ImageFilter.blur(
-                        sigmaX: 10.0, sigmaY: 10.0, tileMode: TileMode.decal),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(40),
-                            topRight: Radius.circular(40)),
-                        gradient: LinearGradient(
-                          colors: gradiantColors ?? [Colors.grey.withOpacity(
-                              0.6), Colors.white.withOpacity(0.9)],
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(40),
+                        topRight: Radius.circular(40)),
+                    gradient: LinearGradient(
+                      colors: gradiantColors ?? [Colors.grey.withOpacity(
+                          0.6), Colors.white.withOpacity(0.9)],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(40),
+                    child: BackdropFilter(
+                      filter: ImageFilter.blur(
+                          sigmaX: 12.0, sigmaY: 12.0, tileMode: TileMode.clamp),
+                      child: Container(
+                        height: constraint.maxHeight,
+                        width: constraint.maxWidth,
+                        child: Padding(
+                          padding: const EdgeInsets.all(20),
+                          child: child,
                         ),
-                      ),
-                      height: constraint.maxHeight,
-                      width: constraint.maxWidth,
-                      child: Padding(
-                        padding: const EdgeInsets.all(20),
-                        child: child,
                       ),
                     ),
                   ),
